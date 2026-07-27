@@ -6,7 +6,7 @@ resource "tls_private_key" "bastion_key" {
 }
 
 resource "aws_key_pair" "bastion_keypair" {
-  key_name   = "bastion-key"
+  key_name   = "useast-bastion-key"
   public_key = tls_private_key.bastion_key.public_key_openssh
 }
 
@@ -15,7 +15,7 @@ resource "aws_key_pair" "bastion_keypair" {
 
 resource "local_file" "bastion_private_key" {
   content         = tls_private_key.bastion_key.private_key_pem
-  filename        = "bastion-key.pem"
+  filename        = "useast-bastion-key.pem"
   file_permission = "0400"
 }
 
